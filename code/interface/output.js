@@ -53,17 +53,17 @@ var output = {
 
          // Calculate line index for each word using offsetTop
          const wordElement = document.getElementById(`word-${index}`);
-         const wordOffsetTop = wordElement.getBoundingClientRect().top;
-         word.lineIndex = wordOffsetTop;
+         const wordY = wordElement.getBoundingClientRect().y;
+         word.lineIndex = wordY;
 
          // Build an array of all words by line
-         if (!this.lines[wordOffsetTop]) {
-            this.lines[wordOffsetTop] = [];
+         if (!this.lines[wordY]) {
+            this.lines[wordY] = [];
 
             // Keep track of the highest line index
-            this.maxLineIndex = wordOffsetTop;
+            this.maxLineIndex = wordY;
          }
-         this.lines[wordOffsetTop].push(word);
+         this.lines[wordY].push(word);
       });
 
       // Insert details on focused word if one exists
